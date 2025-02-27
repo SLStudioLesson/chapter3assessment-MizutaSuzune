@@ -2,7 +2,8 @@ import com.recipeapp.datahandler.CSVDataHandler;
 import com.recipeapp.datahandler.DataHandler;
 import com.recipeapp.datahandler.JSONDataHandler;
 import com.recipeapp.ui.RecipeUI;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class App {
 
@@ -31,10 +32,6 @@ public class App {
                 RecipeUI recipeui = new RecipeUI(dataHandler);
                 recipeui.displayMenu();
             }
-
-            
-            
-
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
         }

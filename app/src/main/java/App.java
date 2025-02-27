@@ -33,7 +33,7 @@ public class App {
                 recipeui.displayMenu();
             }
         } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

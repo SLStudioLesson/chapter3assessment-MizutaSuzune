@@ -2,7 +2,6 @@ package com.recipeapp.datahandler;
 
 import com.recipeapp.model.Recipe;
 import java.util.ArrayList;
-import java.util.List;
 import java.io.IOException;
 
 public interface DataHandler {

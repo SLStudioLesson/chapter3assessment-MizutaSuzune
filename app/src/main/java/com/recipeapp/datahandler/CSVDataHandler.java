@@ -5,6 +5,8 @@ import com.recipeapp.model.Recipe;
 import com.recipeapp.model.Ingredient;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class CSVDataHandler implements DataHandler {
     // レシピデータを格納するCSVファイルのパス
@@ -35,7 +37,7 @@ public class CSVDataHandler implements DataHandler {
         ArrayList<Recipe> recipes = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
-            while(!((line = reader.readLine()) == null)) {
+            while((line = reader.readLine()) != null) {
                 String recipeName =line.substring(0,line.indexOf(","));
                 String[] ing1 =(line.substring(line.indexOf(",") + 1)).split(",");
                 ArrayList<Ingredient> ingredients = new ArrayList<>();
@@ -49,10 +51,24 @@ public class CSVDataHandler implements DataHandler {
         }
         return recipes;
     }
-
+    /*
+     * 入力値をファイルに書き込む
+     * 料理名はrecipi型として設定し、材料名は材料型でリストを解体しつつ書き込む
+     * 書き込み完了後に改行
+     */
     @Override
-    public void writeData(Recipe recipe) throws IOException {
-
+    public void writeData(Recipe recipe) throws IOException{
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath,true))) {
+            String str = recipe.getName();
+            for(Ingredient ing3 : recipe.getIngredients()) {
+                str = (str + "," +ing3.getName());
+            }
+                writer.write(str);
+                writer.newLine();
+                System.out.println("Recipe added successfully.");
+        } catch (IOException e) {
+            throw new IOException();
+        }
     }
 
     @Override

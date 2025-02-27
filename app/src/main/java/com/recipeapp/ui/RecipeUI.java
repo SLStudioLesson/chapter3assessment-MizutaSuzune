@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
+import com.recipeapp.datahandler.DataHandler;
+import com.recipeapp.model.Recipe;
 
 public class RecipeUI {
     private BufferedReader reader;
@@ -48,6 +51,17 @@ public class RecipeUI {
             } catch (IOException e) {
                 System.out.println("Error reading input from user: " + e.getMessage());
             }
+        }
+    }
+    private void displayRecipes() {
+        try{
+            ArrayList<Recipe> recipe = new ArrayList<>();
+            recipe = dataHandler.readData();
+            while(!(recipe.size() == 0)) {
+                
+            }
+        } catch(IOException e) {
+            System.out.println("Error reading file: 例外のメッセージ");
         }
     }
 }

@@ -5,7 +5,6 @@ import com.recipeapp.model.Recipe;
 import com.recipeapp.model.Ingredient;
 import java.io.FileReader;
 import java.io.BufferedReader;
-import java.io.File;
 
 public class CSVDataHandler implements DataHandler {
     // レシピデータを格納するCSVファイルのパス
@@ -36,7 +35,7 @@ public class CSVDataHandler implements DataHandler {
         ArrayList<Recipe> recipes = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
-            while(!((line = reader.readLine()). isEmpty())) {
+            while(!((line = reader.readLine()) == null)) {
                 String recipeName =line.substring(0,line.indexOf(","));
                 String[] ing1 =(line.substring(line.indexOf(",") + 1)).split(",");
                 ArrayList<Ingredient> ingredients = new ArrayList<>();

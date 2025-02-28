@@ -97,7 +97,7 @@ public class RecipeUI {
      * Recipeインスタンスを作成し値を設定後、RecipeUIのファイル書き込みメソッドを呼ぶ
      */
     private void addNewRecipe() {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        try {
             System.out.println("Adding a new recipe.");
             System.out.print("Enter recipe name: ");
             String addName = reader.readLine();
